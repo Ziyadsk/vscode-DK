@@ -1,0 +1,245 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "DK",
+	"fileTypes": ["dk"],
+	
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#symbols"
+		},
+		{
+			"include": "#classes"
+		}
+	],
+	
+	"repository": {
+		"keywords": { 
+			"patterns": [
+			
+				{
+					"name": "keyword",
+					"match": "\\b(pub|public|private|fn|extends|implements|abstract|protected|static|const|namespace|trait)\\b"
+				},	
+			{
+				"name": "keyword.control.DK",
+				"match": "\\b(if|while|for|return|else|foreach|yield|endfor|in|endwhile|endforeach|new)\\b"
+			},
+			{
+				
+				"match": "(\\w+)\\(((\".*\")?)\\)",
+				"captures": {
+					"1":{
+						"name": "support.function"
+					},
+					"2":{
+						"name":"string"
+					}
+					
+				}
+			}
+	
+			
+			
+		]
+		},
+		"comments": {
+			"patterns": [
+				{
+				"name": "comment.line.double-dash.DK",
+				"begin": "//",
+				"end": "\n"
+	
+				},
+				{
+				"name":"comment.block.DK",
+				"begin": "\/[*]",
+				"end": "[*](\/)"
+				}
+			]
+		},
+		"variables": {
+			"patterns" : [
+			
+				{
+					"match": "(->)(\\w+)\\s",
+					"captures": {
+						"2":{
+							"name":"variable"
+						}
+					}
+				},
+				{
+					"match": "(\\w+)(->)",
+					"captures": {
+						"1":{
+							"name":"variable"
+						}
+					}
+				},
+				{
+					"match": "(->)(\\w+)(\\(\\))",
+					"captures": {
+						"2":{
+							"name":"support.function"
+						}
+					}
+				},
+				{
+					"match": "(\\w+)(\\()",
+					"captures": {
+						"1":{
+							"name":"support.function"
+						}
+					}
+				},
+				{
+					"match": "(\\w+)\\(\\)",
+					"captures": {
+						"1":{
+							"name":"support.function"
+						}
+					}
+				},
+				{
+					"match": "(__\\w+)\\(\\)",
+					"captures": {
+						"1":{
+							"name":"support.function"
+						}
+					}
+				},
+				{
+					"match": "(__\\w+)(\\(w+\\))",
+					"captures": {
+						"1":{
+							"name":"support.function"
+						}
+					}
+				},
+				{
+					"name":"variable.language",
+					"match": "(null|this|self|super())"
+				},
+				{
+					"name":"constant.numeric",
+					"match":"\\d+"
+				},
+				{
+					"match": "new\\s+(\\w+)",
+					"captures":{
+						"1":{
+							"name":"support.type"
+						}
+					}
+				
+				}
+				
+			
+				
+			]
+		},
+		
+		"strings": {
+			"patterns":[
+				{
+
+				"name": "string.quoted.double.DK",
+				"begin": "\"",
+				"end": "\"",
+				"patterns": [
+					{
+						"name": "constant.character.escape.DK",
+						"match": "\\\\."
+					}
+				]
+			},
+			{
+			"name": "string.quoted.single.DK",
+			"begin": "\\'",
+			"end": "\\'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.DK",
+					"match": "\\\\."
+				}
+			]
+			}
+
+				
+			]
+		},
+			
+		"symbols":{
+			"patterns": [
+				{
+					"name":"invalid.illegal",
+					"match": ";"
+				}
+			]
+		},
+		
+		"classes":{
+			"patterns": [
+				{
+					"match": "(\\w+)::",
+					"captures":{
+						"1":{
+							"name":"support.type"
+						}
+					}
+				
+				},
+				{
+					"match": "new\\s+(\\w+)",
+					"captures":{
+						"1":{
+							"name":"support.type"
+						}
+					}
+				
+				},
+				{
+					"match": "(class)\\s+(\\w+)",
+					"captures": {
+						"1":{
+							"name":"keyword"
+						},
+						"2":{
+							"name":"support.type"
+						}
+					}
+				},
+				{
+					"match": "(class)",
+					"captures": {
+						"1":{
+							"name":"keyword"
+						}
+					
+					}
+				},
+				{
+					"name": "entity.other.inherited-class",
+					"match": "\\b(int|array|string|bool)\\b"
+				}
+				
+			]
+		}	
+	
+	},
+	
+	"scopeName": "source.DK"	
+	
+}

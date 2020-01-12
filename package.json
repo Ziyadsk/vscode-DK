@@ -1,0 +1,30 @@
+{
+    "name": "DK",
+    "displayName": "DK",
+    "description": "Support for DK",
+    "publisher": "ziyadsk",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.41.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ziyadsk/DK-Vscode"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "dk",
+            "aliases": ["DK", "dk"],
+            "extensions": ["dk"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "dk",
+            "scopeName": "",
+            "path": "./syntaxes/dk.tmLanguage.json"
+        }]
+    }
+}
